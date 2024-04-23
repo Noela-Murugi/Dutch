@@ -1,0 +1,7 @@
+#pragma version 10
+
+smart_contracts.hello_dutch.contract.HelloDutch.clear_state_program:
+    // contract.py:4
+    // class HelloDutch(ARC4Contract):
+    int 1
+    return

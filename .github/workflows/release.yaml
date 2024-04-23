@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  AlgoDutch-contracts-validate:
+    name: Run AlgoDutch-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/AlgoDutch-contracts-ci.yaml
+
+  AlgoDutch-contracts-release:
+    name: Run AlgoDutch-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/AlgoDutch-contracts-cd.yaml
+    needs: AlgoDutch-contracts-validate
+
+  AlgoDutch-frontend-validate:
+    name: Run AlgoDutch-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/AlgoDutch-frontend-ci.yaml
+
+  AlgoDutch-frontend-release:
+    name: Run AlgoDutch-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/AlgoDutch-frontend-cd.yaml
+    needs: AlgoDutch-frontend-validate

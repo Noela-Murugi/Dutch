@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  AlgoDutch-contracts-ci:
+    name: Run AlgoDutch-contracts validation
+    uses: ./.github/workflows/AlgoDutch-contracts-ci.yaml
+
+  AlgoDutch-frontend-ci:
+    name: Run AlgoDutch-frontend validation
+    uses: ./.github/workflows/AlgoDutch-frontend-ci.yaml
+
